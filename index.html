@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KTエステート株式会社 | コーポレートサイト</title>
+  <meta name="description" content="KTエステート株式会社 - 不動産の買取・仲介・造成・賃貸を手がける東京都八王子市の不動産会社">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Hero (dark) */
+      --hero-bg: #0a0a0a;
+      --hero-text: #f2f2f2;
+      --hero-muted: #666;
+      /* Body (light) */
+      --bg: #ffffff;
+      --bg-alt: #f7f7f7;
+      --text: #1a1a1a;
+      --text-muted: #555;
+      --text-sub: #444;
+      --border: rgba(0,0,0,0.08);
+      --border-hover: rgba(0,0,0,0.18);
+      --card-bg: #fff;
+      --card-hover: #fafafa;
+      --font-en: 'Inter', sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-jp);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== Navigation ========== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 28px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s ease;
+    }
+
+    .nav.scrolled {
+      padding: 18px 56px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-en);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--hero-text);
+      text-decoration: none;
+      transition: color 0.4s ease;
+    }
+
+    .nav.scrolled .nav-logo { color: var(--text); }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-en);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--hero-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .nav.scrolled .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--hero-text); }
+    .nav.scrolled .nav-links a:hover { color: var(--text); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      z-index: 110;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--hero-text);
+      transition: all 0.3s ease;
+    }
+
+    .nav.scrolled .nav-hamburger span { background: var(--text); }
+
+    .nav-hamburger.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    /* Mobile menu overlay */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-mobile.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-mobile a {
+      font-family: var(--font-en);
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: #ccc;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-mobile a:hover { color: #fff; }
+
+    /* ========== Hero ========== */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+      background: var(--hero-bg);
+      color: var(--hero-text);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0 100px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-right {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-label {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      color: var(--hero-muted);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-en);
+      font-size: clamp(40px, 6vw, 88px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: var(--hero-muted);
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1s forwards;
+    }
+
+    .hero-tag {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--hero-muted);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 8px 20px;
+      border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      right: 80px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: var(--hero-muted);
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.2s forwards;
+    }
+
+    .hero-scroll::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--hero-muted);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== Section Common ========== */
+    .section {
+      padding: 140px 56px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section--wide {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section--alt { background: var(--bg-alt); }
+
+    .section-header { margin-bottom: 80px; }
+
+    .section-label {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: var(--font-en);
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+
+    .section-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--text-muted);
+      margin-top: 28px;
+    }
+
+    /* ========== Business ========== */
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    .biz-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px 32px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .biz-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--text);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .biz-card:hover {
+      background: var(--card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    }
+
+    .biz-card:hover::after { transform: scaleX(1); }
+
+    .biz-number {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .biz-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 28px;
+    }
+
+    .biz-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--text-sub);
+      fill: none;
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .biz-name {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .biz-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .biz-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 2;
+    }
+
+    /* ========== Mission ========== */
+    .mission {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mission-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .mission-catch {
+      font-family: var(--font-en);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .mission-catch-jp {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      margin-bottom: 48px;
+    }
+
+    .mission-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 2.2;
+      text-align: left;
+    }
+
+    .mission-text p + p { margin-top: 20px; }
+
+    /* ========== Strength ========== */
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .str-card {
+      padding: 48px 40px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .str-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+    }
+
+    .str-num {
+      font-family: var(--font-en);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .str-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .str-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 2;
+    }
+
+    /* ========== Company ========== */
+    .company-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .company-table tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease;
+    }
+
+    .company-table tr:hover { background: rgba(0,0,0,0.015); }
+
+    .company-table th {
+      width: 200px;
+      padding: 28px 0;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-align: left;
+      vertical-align: top;
+      letter-spacing: 0.06em;
+    }
+
+    .company-table td {
+      padding: 28px 0;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    /* ========== Footer ========== */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: var(--font-en);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ========== Scroll Reveal ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 960px) {
+      .business-grid { grid-template-columns: repeat(2, 1fr); padding: 0 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 18px 24px; }
+      .nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile { display: flex; }
+      .section { padding: 100px 24px; }
+      .business-grid { grid-template-columns: 1fr; gap: 16px; padding: 0 24px; }
+      .biz-card { padding: 36px 28px; }
+      .strength-grid { grid-template-columns: 1fr; gap: 16px; }
+      .str-card { padding: 36px 28px; }
+      .company-table th { width: 120px; font-size: 12px; }
+      .company-table td { font-size: 14px; }
+      .footer { flex-direction: column; gap: 16px; padding: 40px 24px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 140px 28px 80px; justify-content: flex-end; }
+      .hero-right { display: none; }
+      .hero-scroll { right: 28px; bottom: 28px; }
+      .hero-tags { gap: 8px; }
+      .hero-tag { font-size: 9px; padding: 6px 14px; }
+      .mission-text { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .company-table th,
+      .company-table td { padding: 20px 0; }
+      .hero-title { letter-spacing: 0.05em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">KT ESTATE</a>
+    <ul class="nav-links">
+      <li><a href="#business">Business</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#strength">Strength</a></li>
+      <li><a href="#company">Company</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#business">Business</a>
+    <a href="#mission">Mission</a>
+    <a href="#strength">Strength</a>
+    <a href="#company">Company</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-left">
+      <p class="hero-label">KT ESTATE INC.</p>
+      <h1 class="hero-title">
+        <span>Clearing</span>
+        <span>New Ground.</span>
+      </h1>
+      <p class="hero-sub">その土地に、大きな晴れ間を。</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Purchase</span>
+        <span class="hero-tag">Intermediary</span>
+        <span class="hero-tag">Development</span>
+        <span class="hero-tag">Rent</span>
+      </div>
+    </div>
+    <div class="hero-right"></div>
+    <p class="hero-scroll">SCROLL</p>
+  </section>
+
+  <!-- Business -->
+  <section class="section section--wide" id="business">
+    <div class="section-header reveal" style="max-width:1200px; margin:0 auto; padding:0 56px;">
+      <p class="section-label">Business</p>
+      <h2 class="section-title">事業内容</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="business-grid">
+      <div class="biz-card reveal">
+        <p class="biz-number">01</p>
+        <div class="biz-icon">
+          <svg viewBox="0 0 48 48">
+            <rect x="6" y="8" width="36" height="32" rx="3"/>
+            <path d="M6 18h36"/>
+            <path d="M18 18v22"/>
+            <circle cx="30" cy="30" r="5"/>
+            <path d="M30 27v6M27 30h6"/>
+          </svg>
+        </div>
+        <p class="biz-name">Purchase</p>
+        <h3 class="biz-title">買取事業</h3>
+        <p class="biz-desc">再建築不可・接道なし・崖地など、条件が複雑な土地や空き家を直接買い取ります。他社で断られた物件もご相談ください。</p>
+      </div>
+      <div class="biz-card reveal">
+        <p class="biz-number">02</p>
+        <div class="biz-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M8 40V20l16-12 16 12v20H8z"/>
+            <rect x="18" y="28" width="12" height="12"/>
+            <path d="M24 28v12"/>
+            <path d="M4 22l20-16 20 16"/>
+          </svg>
+        </div>
+        <p class="biz-name">Intermediary</p>
+        <h3 class="biz-title">仲介事業</h3>
+        <p class="biz-desc">売主と買主の間に立ち、不動産取引をサポート。適正な査定と丁寧な対応で、スムーズな売買を実現します。</p>
+      </div>
+      <div class="biz-card reveal">
+        <p class="biz-number">03</p>
+        <div class="biz-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M4 40l10-16 8 6 12-18 10 12v16H4z"/>
+            <path d="M4 40h40"/>
+            <path d="M14 24l-2-8 6 2"/>
+            <path d="M34 12l2-6-6 1"/>
+          </svg>
+        </div>
+        <p class="biz-name">Development</p>
+        <h3 class="biz-title">造成事業</h3>
+        <p class="biz-desc">崖地・傾斜地を宅地として再生する造成工事を手がけます。現場に精通した技術力で、土地のポテンシャルを引き出します。</p>
+      </div>
+      <div class="biz-card reveal">
+        <p class="biz-number">04</p>
+        <div class="biz-icon">
+          <svg viewBox="0 0 48 48">
+            <rect x="8" y="12" width="32" height="28" rx="2"/>
+            <path d="M8 12l16-6 16 6"/>
+            <rect x="14" y="20" width="8" height="8"/>
+            <rect x="26" y="20" width="8" height="8"/>
+            <rect x="18" y="32" width="12" height="8"/>
+          </svg>
+        </div>
+        <p class="biz-name">Rent</p>
+        <h3 class="biz-title">賃貸事業</h3>
+        <p class="biz-desc">物件の管理・運用から入居者募集まで、オーナー様の資産価値を最大化する賃貸管理サービスを提供します。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section mission" id="mission">
+    <div class="mission-inner reveal">
+      <p class="section-label">Mission</p>
+      <h2 class="mission-catch">Build Value From The Ground Up</h2>
+      <p class="mission-catch-jp">--- 地面から、価値を積み上げる ---</p>
+      <div class="mission-text">
+        <p>不動産の世界には、条件が合わないという理由だけで見過ごされる土地が数多くあります。再建築不可、接道なし、崖地。大手が手を出さない土地にこそ、私たちは可能性を見出します。</p>
+        <p>造成工事の現場に立ち続けてきたからこそわかる、土地の本当のポテンシャル。机上の判断ではなく、現地に足を運び、自分の目で確かめ、最適な活用方法を見つけ出す。それが私たちの仕事です。</p>
+        <p>関わるすべての人に誠実に。土地に新しい価値を。KTエステートは、不動産の常識にとらわれず、一つひとつの土地と向き合い続けます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strength -->
+  <section class="section" id="strength">
+    <div class="section-header reveal">
+      <p class="section-label">Strength</p>
+      <h2 class="section-title">私たちの強み</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="strength-grid">
+      <div class="str-card reveal">
+        <p class="str-num">01</p>
+        <h3 class="str-title">現場主義の目利き力</h3>
+        <p class="str-desc">代表自ら造成現場に立ち、崖地や傾斜地を宅地として再生してきた実績があります。現場を知るからこそ、他社が見落とす土地の価値を正しく評価できます。</p>
+      </div>
+      <div class="str-card reveal">
+        <p class="str-num">02</p>
+        <h3 class="str-title">難あり物件への対応力</h3>
+        <p class="str-desc">再建築不可、接道なし、変形地。一般的な不動産会社が敬遠する条件の物件にも対応。買取から造成まで自社で一貫して行える体制が強みです。</p>
+      </div>
+      <div class="str-card reveal">
+        <p class="str-num">03</p>
+        <h3 class="str-title">直接買取による迅速な対応</h3>
+        <p class="str-desc">仲介ではなく自社で直接買い取るため、意思決定が速く、お客様をお待たせしません。仲介手数料も不要です。</p>
+      </div>
+      <div class="str-card reveal">
+        <p class="str-num">04</p>
+        <h3 class="str-title">誠実で透明なコミュニケーション</h3>
+        <p class="str-desc">査定の根拠、買取価格の算出ロジックを丁寧に説明します。納得いただけない場合はいつでもお断りいただけます。営業電話は一切いたしません。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <section class="section" id="company">
+    <div class="section-header reveal">
+      <p class="section-label">Company</p>
+      <h2 class="section-title">会社概要</h2>
+      <div class="section-divider"></div>
+    </div>
+    <table class="company-table reveal">
+      <tr>
+        <th>会社名</th>
+        <td>KTエステート株式会社</td>
+      </tr>
+      <tr>
+        <th>代表者</th>
+        <td>内田 大晴</td>
+      </tr>
+      <tr>
+        <th>事業内容</th>
+        <td>不動産の買取・仲介・賃貸管理<br>造成工事</td>
+      </tr>
+      <tr>
+        <th>所在地</th>
+        <td>〒192-0061<br>東京都八王子市平岡町15-14 明光ビル3F</td>
+      </tr>
+      <tr>
+        <th>TEL</th>
+        <td>042-634-9508</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">KT ESTATE</div>
+    <p class="footer-copy">&copy; 2026 KT ESTATE Inc. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ========== Hero Motion Graphic (Terrain Contour + Grid) ==========
+    (function() {
+      const canvas = document.getElementById('heroCanvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, time = 0, mouse = { x: -1000, y: -1000 };
+
+      function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.parentElement.getBoundingClientRect();
+        w = rect.width;
+        h = rect.height;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      // Simplex-like noise via layered sine
+      function noise(x, y, t) {
+        return (
+          Math.sin(x * 0.008 + t * 0.3) * Math.cos(y * 0.006 + t * 0.2) * 0.5 +
+          Math.sin(x * 0.015 + y * 0.01 + t * 0.15) * 0.3 +
+          Math.cos(x * 0.005 - y * 0.012 + t * 0.25) * 0.2
+        );
+      }
+
+      // Mouse influence on terrain height
+      function mouseInfluence(x, y) {
+        const dx = x - mouse.x;
+        const dy = y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const radius = 180;
+        if (dist < radius) {
+          return (1 - dist / radius) * 0.4;
+        }
+        return 0;
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        time += 0.008;
+
+        // --- Contour lines (topographic map style) ---
+        var levels = 12;
+        var step = 40;
+        for (var level = 0; level < levels; level++) {
+          var threshold = -0.6 + (level / levels) * 1.2;
+          var alpha = 0.08 + (level / levels) * 0.15;
+          ctx.strokeStyle = 'rgba(255,255,255,' + alpha + ')';
+          ctx.lineWidth = 0.6;
+
+          // March through a grid to find contour crossings
+          for (var gx = 0; gx < w; gx += step) {
+            for (var gy = 0; gy < h; gy += step) {
+              var v00 = noise(gx, gy, time) + mouseInfluence(gx, gy);
+              var v10 = noise(gx + step, gy, time) + mouseInfluence(gx + step, gy);
+              var v01 = noise(gx, gy + step, time) + mouseInfluence(gx, gy + step);
+              var v11 = noise(gx + step, gy + step, time) + mouseInfluence(gx + step, gy + step);
+
+              // Simple marching squares - draw line segments where contour crosses
+              var edges = [];
+              if ((v00 - threshold) * (v10 - threshold) < 0) {
+                var t1 = (threshold - v00) / (v10 - v00);
+                edges.push({ x: gx + t1 * step, y: gy });
+              }
+              if ((v10 - threshold) * (v11 - threshold) < 0) {
+                var t2 = (threshold - v10) / (v11 - v10);
+                edges.push({ x: gx + step, y: gy + t2 * step });
+              }
+              if ((v01 - threshold) * (v11 - threshold) < 0) {
+                var t3 = (threshold - v01) / (v11 - v01);
+                edges.push({ x: gx + t3 * step, y: gy + step });
+              }
+              if ((v00 - threshold) * (v01 - threshold) < 0) {
+                var t4 = (threshold - v00) / (v01 - v00);
+                edges.push({ x: gx, y: gy + t4 * step });
+              }
+
+              if (edges.length >= 2) {
+                ctx.beginPath();
+                ctx.moveTo(edges[0].x, edges[0].y);
+                ctx.lineTo(edges[1].x, edges[1].y);
+                ctx.stroke();
+                if (edges.length === 4) {
+                  ctx.beginPath();
+                  ctx.moveTo(edges[2].x, edges[2].y);
+                  ctx.lineTo(edges[3].x, edges[3].y);
+                  ctx.stroke();
+                }
+              }
+            }
+          }
+        }
+
+        // --- Land plot grid (区画線) ---
+        var plotSize = 120;
+        var plotOffset = time * 8;
+        ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+        ctx.lineWidth = 0.5;
+        for (var px = -plotSize; px < w + plotSize; px += plotSize) {
+          var xShift = Math.sin(px * 0.005 + time * 0.5) * 15;
+          ctx.beginPath();
+          ctx.moveTo(px + xShift, 0);
+          ctx.lineTo(px + xShift, h);
+          ctx.stroke();
+        }
+        for (var py = -plotSize; py < h + plotSize; py += plotSize) {
+          var yShift = Math.cos(py * 0.005 + time * 0.4) * 10;
+          ctx.beginPath();
+          ctx.moveTo(0, py + yShift);
+          ctx.lineTo(w, py + yShift);
+          ctx.stroke();
+        }
+
+        // --- Plot markers (区画ポイント) ---
+        for (var mx = plotSize; mx < w; mx += plotSize) {
+          for (var my = plotSize; my < h; my += plotSize) {
+            var xS = Math.sin(mx * 0.005 + time * 0.5) * 15;
+            var yS = Math.cos(my * 0.005 + time * 0.4) * 10;
+            var markerX = mx + xS;
+            var markerY = my + yS;
+
+            // Mouse proximity glow
+            var mdx = markerX - mouse.x;
+            var mdy = markerY - mouse.y;
+            var mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+            var mAlpha = 0.12;
+            var mSize = 2.5;
+            if (mDist < 200) {
+              mAlpha = 0.12 + (1 - mDist / 200) * 0.5;
+              mSize = 2.5 + (1 - mDist / 200) * 4;
+            }
+
+            ctx.fillStyle = 'rgba(255,255,255,' + mAlpha + ')';
+            ctx.beginPath();
+            ctx.arc(markerX, markerY, mSize, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // --- Terrain cross-section line (地形断面) at bottom ---
+        ctx.strokeStyle = 'rgba(255,255,255,0.14)';
+        ctx.lineWidth = 1;
+        var baseY = h * 0.82;
+        ctx.beginPath();
+        for (var tx = 0; tx <= w; tx += 3) {
+          var terrainH = noise(tx * 1.5, 0, time * 2) * 60 + mouseInfluence(tx, baseY) * 80;
+          var ty = baseY + terrainH;
+          if (tx === 0) ctx.moveTo(tx, ty);
+          else ctx.lineTo(tx, ty);
+        }
+        ctx.stroke();
+
+        // Second cross-section (lower, dimmer)
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.beginPath();
+        var baseY2 = h * 0.88;
+        for (var tx2 = 0; tx2 <= w; tx2 += 3) {
+          var terrainH2 = noise(tx2 * 1.2 + 200, 100, time * 1.8) * 45 + mouseInfluence(tx2, baseY2) * 60;
+          var ty2 = baseY2 + terrainH2;
+          if (tx2 === 0) ctx.moveTo(tx2, ty2);
+          else ctx.lineTo(tx2, ty2);
+        }
+        ctx.stroke();
+
+        requestAnimationFrame(draw);
+      }
+
+      canvas.parentElement.addEventListener('mousemove', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      canvas.parentElement.addEventListener('mouseleave', function() {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      window.addEventListener('resize', resize);
+
+      resize();
+      draw();
+    })();
+
+    // ========== Nav scroll effect ==========
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ========== Hamburger menu ==========
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ========== Scroll reveal ==========
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
+        if (entry.isIntersecting) {
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+  </script>
+
+</body>
+</html>
