@@ -559,13 +559,78 @@
     /* ========== Scroll Reveal ========== */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Slide from left */
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Slide from right */
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Scale up */
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stagger children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Divider grow */
+    .section-divider {
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    }
+
+    .reveal.visible .section-divider,
+    .reveal-left.visible .section-divider {
+      transform: scaleX(1);
     }
 
     /* ========== Responsive ========== */
@@ -652,13 +717,13 @@
 
   <!-- Business -->
   <section class="section section--wide" id="business">
-    <div class="section-header reveal" style="max-width:1200px; margin:0 auto; padding:0 56px;">
+    <div class="section-header reveal-left" style="max-width:1200px; margin:0 auto; padding:0 56px;">
       <p class="section-label">Business</p>
       <h2 class="section-title">事業内容</h2>
       <div class="section-divider"></div>
     </div>
-    <div class="business-grid">
-      <div class="biz-card reveal">
+    <div class="business-grid stagger">
+      <div class="biz-card reveal-scale">
         <p class="biz-number">01</p>
         <div class="biz-icon">
           <svg viewBox="0 0 48 48">
@@ -673,7 +738,7 @@
         <h3 class="biz-title">買取事業</h3>
         <p class="biz-desc">再建築不可・接道なし・崖地など、条件が複雑な土地や空き家を直接買い取ります。他社で断られた物件もご相談ください。</p>
       </div>
-      <div class="biz-card reveal">
+      <div class="biz-card reveal-scale">
         <p class="biz-number">02</p>
         <div class="biz-icon">
           <svg viewBox="0 0 48 48">
@@ -687,7 +752,7 @@
         <h3 class="biz-title">仲介事業</h3>
         <p class="biz-desc">売主と買主の間に立ち、不動産取引をサポート。適正な査定と丁寧な対応で、スムーズな売買を実現します。</p>
       </div>
-      <div class="biz-card reveal">
+      <div class="biz-card reveal-scale">
         <p class="biz-number">03</p>
         <div class="biz-icon">
           <svg viewBox="0 0 48 48">
@@ -701,7 +766,7 @@
         <h3 class="biz-title">造成事業</h3>
         <p class="biz-desc">崖地・傾斜地を宅地として再生する造成工事を手がけます。現場に精通した技術力で、土地のポテンシャルを引き出します。</p>
       </div>
-      <div class="biz-card reveal">
+      <div class="biz-card reveal-scale">
         <p class="biz-number">04</p>
         <div class="biz-icon">
           <svg viewBox="0 0 48 48">
@@ -721,7 +786,7 @@
 
   <!-- Mission -->
   <section class="section mission" id="mission">
-    <div class="mission-inner reveal">
+    <div class="mission-inner reveal-scale">
       <p class="section-label">Mission</p>
       <h2 class="mission-catch">Build Value From The Ground Up</h2>
       <p class="mission-catch-jp">--- 地面から、価値を積み上げる ---</p>
@@ -735,28 +800,28 @@
 
   <!-- Strength -->
   <section class="section" id="strength">
-    <div class="section-header reveal">
+    <div class="section-header reveal-left">
       <p class="section-label">Strength</p>
       <h2 class="section-title">私たちの強み</h2>
       <div class="section-divider"></div>
     </div>
-    <div class="strength-grid">
-      <div class="str-card reveal">
+    <div class="strength-grid stagger">
+      <div class="str-card reveal-left">
         <p class="str-num">01</p>
         <h3 class="str-title">現場主義の目利き力</h3>
         <p class="str-desc">代表自ら造成現場に立ち、崖地や傾斜地を宅地として再生してきた実績があります。現場を知るからこそ、他社が見落とす土地の価値を正しく評価できます。</p>
       </div>
-      <div class="str-card reveal">
+      <div class="str-card reveal-right">
         <p class="str-num">02</p>
         <h3 class="str-title">難あり物件への対応力</h3>
         <p class="str-desc">再建築不可、接道なし、変形地。一般的な不動産会社が敬遠する条件の物件にも対応。買取から造成まで自社で一貫して行える体制が強みです。</p>
       </div>
-      <div class="str-card reveal">
+      <div class="str-card reveal-left">
         <p class="str-num">03</p>
         <h3 class="str-title">直接買取による迅速な対応</h3>
         <p class="str-desc">仲介ではなく自社で直接買い取るため、意思決定が速く、お客様をお待たせしません。仲介手数料も不要です。</p>
       </div>
-      <div class="str-card reveal">
+      <div class="str-card reveal-right">
         <p class="str-num">04</p>
         <h3 class="str-title">誠実で透明なコミュニケーション</h3>
         <p class="str-desc">査定の根拠、買取価格の算出ロジックを丁寧に説明します。納得いただけない場合はいつでもお断りいただけます。営業電話は一切いたしません。</p>
@@ -766,7 +831,7 @@
 
   <!-- Company -->
   <section class="section" id="company">
-    <div class="section-header reveal">
+    <div class="section-header reveal-left">
       <p class="section-label">Company</p>
       <h2 class="section-title">会社概要</h2>
       <div class="section-divider"></div>
@@ -1011,19 +1076,26 @@
     });
 
     // ========== Scroll reveal ==========
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry, i) {
+    var allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          setTimeout(function() {
-            entry.target.classList.add('visible');
-          }, i * 80);
-          observer.unobserve(entry.target);
+          // Stagger children with delay
+          if (entry.target.classList.contains('stagger')) {
+            var children = entry.target.children;
+            for (var i = 0; i < children.length; i++) {
+              (function(child, delay) {
+                setTimeout(function() { child.classList.add('visible'); }, delay);
+              })(children[i], i * 150);
+            }
+          }
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
 
-    reveals.forEach(function(el) { observer.observe(el); });
+    allReveals.forEach(function(el) { revealObserver.observe(el); });
   </script>
 
 </body>
